@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>管理後台</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <%- include('./template/navbar'); %>
+    <div class="lotterys">
+      <div class="bg">
+        <% if(!username){ %>
+        <h2 class="warning">請先登入後台系統</h2>
+        <% } else { %>
+        <div class="lottery">
+          <h1>新增獎項</h1>
+          <h3><%= errorMessage %></h3>
+          <form method="POST" action="/add_prize">
+            <div class="admin__info">
+              <div class="admin__info__title">獎項：</div>
+              <input type="text" name="prize" class="input_text" />
+            </div>
+            <div class="admin__info">
+              <div class="admin__info__title">獎品：</div>
+              <input type="text" name="prize_name" class="input_text" />
+            </div>
+            <div class="admin__info">
+              <div class="admin__info__title">圖片網址 ：</div>
+              <input type="text" name="prize_img" class="input_text" />
+            </div>
+            <div class="admin__info">
+              <div class="admin__info__title">權重：</div>
+              <input type="number" name="prize_weights" class="input_text" />
+            </div>
+            <input type="submit" value="新增" class="submit_button" />
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <%- include('./template/footer'); %>
+  </body>
+</html>

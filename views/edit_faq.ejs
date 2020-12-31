@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>管理後台</title>
+    <link rel="stylesheet" href="../style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <%- include('./template/navbar'); %>
+    <div class="lotterys">
+      <div class="bg">
+        <% if(!username){ %>
+        <h2 class="warning">請先登入後台系統</h2>
+        <% } else { %>
+        <div class="lottery">
+          <h1>編輯常見問題</h1>
+          <h3><%= errorMessage %></h3>
+          <form method="POST" action="/edit_faq/<%=faq.id%>">
+            <div class="admin__info">
+              <div class="admin__info__title">順序：</div>
+              <input
+                type="number"
+                name="order"
+                class="input_text"
+                value="<%=faq.order%>"
+              />
+            </div>
+            <div class="admin__info">
+              <div class="admin__info__title">問題：</div>
+              <input
+                type="text"
+                name="question"
+                class="input_text"
+                value="<%=faq.question%>"
+              />
+            </div>
+            <div class="admin__info">
+              <div class="admin__info__title">回答 ：</div>
+              <input
+                type="text"
+                rows="10"
+                name="answer"
+                class="input_text"
+                value="<%=faq.answer%>"
+              />
+            </div>
+            <input type="submit" value="提交" class="submit_button" />
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <%- include('./template/footer'); %>
+  </body>
+</html>

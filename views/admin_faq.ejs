@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>管理常見問題後台</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <%- include('./template/navbar'); %>
+    <div class="lotterys">
+      <div class="bg">
+        <% if(!username){ %>
+        <h2 class="warning">請先登入後台系統</h2>
+        <% } else { %>
+        <div class="admin_board">
+          <h1>常見問題管理後台</h1>
+          <h3><%= errorMessage %></h3>
+          <div class="faq__board">
+            <% for(let faq of faqs) { %>
+            <div class="faq__card">
+              <div class="faq__card_question">
+                順序：<span><%= faq.order%></span>
+              </div>
+              <div class="faq__card_question">
+                問題：<span><%= faq.question%></span>
+              </div>
+              <div class="faq__card_question">
+                回答：<span><%= faq.answer%></span>
+              </div>
+              <div class="faq__card_setting">
+                <a href="/edit_faq/<%= faq.id%>">編輯</a>
+                <a href="/delete_faq/<%= faq.id%>">刪除</a>
+              </div>
+            </div>
+            <% } %>
+          </div>
+          <div class="faq__btn">
+            <a href="/add_faq" class="submit_button">新增問題</a>
+          </div>
+        </div>
+        <%}%>
+      </div>
+    </div>
+    <%- include('./template/footer'); %>
+  </body>
+</html>

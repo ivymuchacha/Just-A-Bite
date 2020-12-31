@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Just A Bite! 咬一口廚房</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+  </head>
+
+  <body>
+    <%- include('./template/navbar'); %>
+    <section class="banner_menu"></section>
+    <div class="wrapper">
+      <section class="section">
+        <h2 class="section__title">熱銷搶購中</h2>
+        <div class="section__images">
+          <div class="sold_out section__images_ad">
+            <div class="soldout">售完</div>
+            <img src="images/ad-01.png" />
+          </div>
+          <div class="section__images_ad">
+            <div class="soldout">售完</div>
+            <img src="images/ad-02.png" />
+          </div>
+          <div class="section__images_ad">
+            <div class="soldout">售完</div>
+            <img src="images/ad-03.png" />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="section">
+      <div class="wrapper">
+        <div class="section__images">
+          <div class="section__post_images">
+            <img src="images/order-ad.png" />
+          </div>
+          <div class="section__post">
+            <div class="section__post_title">
+              在家也能輕鬆</br>咬一口我們的鮮甜清爽
+            </div>
+            <div class="section__post_desc">
+              您再也不必受限於時間或地點，隨時隨地透過我們24小時的線上購物選購，咬一口廚房堅持以細選食材、輕盈口感，呈現食材本身的原滋原味。
+              
+              我們將咬一口的經典菜色研發製成相應當季的包裝食品及各式精美的伴手禮盒。將剛出爐的新鮮迅速送達家人手中，也適合與更多喜愛咬一口的親朋好友分享難得的健康滋味。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="wrapper">
+      <section class="section">
+        <div class="menu__title">立 即 輕 鬆 選 購</div>
+        <div class="menu__title">︾</div>
+      </section>
+      <section class="section">
+        <div class="menu-product">
+        <%for (let product of products) { %>
+        <div class="product">
+          <img src="<%= product.product_img%>" alt="<%= product.product%>" />
+          <div class="product_desc"><%= product.product%> | $<%= product.product_price%></div>
+          <button class="add_cart_btn">加入購物車</button>
+        </div>
+        <% } %>
+      </div>
+      </section>
+    </div>
+    <div class="wrapper">
+      <section class="section">
+        <div class="menu__title">還 是 想 要 親 身 體 會 我 們 的 服 務 ？</div>
+        <div class="menu__title">︾</div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.5027675839283!2d121.564185343541!3d25.03388622183213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1595515815252!5m2!1szh-TW!2stw"
+          width="100%"
+          height="450"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0"
+        ></iframe>
+      </section>
+    </div>
+    <%- include('./template/footer'); %>
+  </body>
+</html>

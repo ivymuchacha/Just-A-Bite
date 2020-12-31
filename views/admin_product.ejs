@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>管理獎項後台</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <%- include('./template/navbar'); %>
+    <div class="lotterys">
+      <div class="bg">
+        <% if(!username){ %>
+        <h2 class="warning">請先登入後台系統</h2>
+        <% } else { %>
+        <div class="admin_board">
+          <h1>商品管理後台</h1>
+          <h3><%= errorMessage %></h3>
+          <table>
+            <tr class="table_title">
+              <th>ID</th>
+              <th>商品名稱</th>
+              <th>圖片網址</th>
+              <th>價格</th>
+              <th>設定</th>
+            </tr>
+            <%for(let product of products) {%>
+            <tr>
+              <td data-title="ID"><%=product.id%></td>
+              <td data-title="商品名稱"><%=product.product%></td>
+              <td data-title="圖片網址"><%=product.product_img%></td>
+              <td data-title="價格"><%=product.product_price%></td>
+              <td data-title="設定">
+                <a href="/edit_product/<%=product.id%>">編輯</a>
+                <a href="/delete_product/<%=product.id%>">刪除</a>
+              </td>
+            </tr>
+            <%}%>
+          </table>
+          <div class="table_button">
+            <a href="/add_product" class="submit_button">新增商品</a>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <%- include('./template/footer'); %>
+  </body>
+</html>

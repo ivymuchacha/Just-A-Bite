@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>管理後台</title>
+    <link rel="stylesheet" href="../style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <%- include('./template/navbar'); %>
+    <div class="lotterys">
+      <div class="bg">
+        <% if(!username){ %>
+        <h2 class="warning">請先登入後台系統</h2>
+        <% } else { %>
+        <div class="lottery">
+          <h1>編輯商品</h1>
+          <h3><%= errorMessage %></h3>
+          <form method="POST" action="/edit_product/<%=product.id%>">
+            <div class="admin__info">
+              <div class="admin__info__title">商品名稱：</div>
+              <input
+                type="text"
+                name="product"
+                class="input_text"
+                value="<%=product.product%>"
+              />
+            </div>
+            <div class="admin__info">
+              <div class="admin__info__title">圖片網址：</div>
+              <input
+                type="text"
+                name="product_img"
+                class="input_text"
+                value="<%=product.product_img%>"
+              />
+            </div>
+            <div class="admin__info">
+              <div class="admin__info__title">價格 ：</div>
+              <input
+                type="text"
+                name="product_price"
+                class="input_text"
+                value="<%=product.product_price%>"
+              />
+            </div>
+            <input type="submit" value="提交" class="submit_button" />
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <%- include('./template/footer'); %>
+  </body>
+</html>

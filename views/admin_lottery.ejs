@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>管理獎項後台</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <%- include('./template/navbar'); %>
+    <div class="lotterys">
+      <div class="bg">
+        <% if(!username){ %>
+        <h2 class="warning">請先登入後台系統</h2>
+        <% } else { %>
+        <div class="admin_board">
+          <h1>管理獎項後台</h1>
+          <h3><%= errorMessage %></h3>
+          <table>
+            <tr class="table_title">
+              <th>獎項</th>
+              <th>獎品</th>
+              <th>圖片網址</th>
+              <th>權重</th>
+              <th>設定</th>
+            </tr>
+            <% for(let prize of lottery) { %>
+            <tr>
+              <td data-title="獎項"><%= prize.prize %></td>
+              <td data-title="獎品"><%= prize.prize_name %></td>
+              <td data-title="圖片網址"><%= prize.prize_img %></td>
+              <td data-title="權重"><%= prize.prize_weights %></td>
+              <td data-title="設定">
+                <a href="/edit_prize/<%=prize.id%>">編輯</a>
+                <a href="/delete_prize/<%=prize.id%>">刪除</a>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+          <div class="table_button">
+            <a href="/add_prize" class="submit_button">新增獎項</a>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <%- include('./template/footer'); %>
+  </body>
+</html>

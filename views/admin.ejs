@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>管理後台</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <%- include('./template/navbar'); %>
+    <div class="lotterys">
+      <div class="bg">
+        <% if(!username){ %>
+        <div class="lottery">
+          <h1>Login</h1>
+          <h3><%= errorMessage %></h3>
+          <form method="POST" action="/admin">
+            <div class="admin__info">
+              <div class="admin__info__title">帳號：</div>
+              <input type="text" name="username" class="input_text" />
+            </div>
+            <div class="admin__info">
+              <div class="admin__info__title">密碼：</div>
+              <input type="password" name="password" class="input_text" />
+            </div>
+            <input type="submit" value="登入" class="submit_button" />
+          </form>
+        </div>
+        <% } else { %>
+        <div class="admin_board">
+          <h1>管理後台</h1>
+          <h3><%= errorMessage %></h3>
+          <a href="/admin_lottery" class="admin_button">抽獎管理</a>
+          <a href="/admin_product" class="admin_button">商品管理</a>
+          <a href="/admin_faq" class="admin_button">常見問題管理</a>
+          <a href="/logout" class="admin_button">登出</a>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <%- include('./template/footer'); %>
+  </body>
+</html>
